@@ -7,7 +7,7 @@ import ChartBlock from "@/components/chart";
 import LogBlock from "@/components/log";
 
 export default function Home() {
-  const [size, setSize] = useState<number>(30);
+  const [size, setSize] = useState<number>(20);
   const [arr, setArr] = useState<number[]>(
     Array.from({ length: size }, (_, index) => index + 1)
   );
