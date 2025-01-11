@@ -1,20 +1,27 @@
 "use client";
+import { log } from "console";
 import { useState } from "react";
 
 function AlgorithmItem({
   parent,
+  subParent,
   children,
 }: {
   parent: string;
+  subParent : boolean;
   children: any[];
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const handleListParentClick = () => {
+  const handleListParentClick = (parent : string, subParent : boolean) => {
+    // subParent ? null : console.log(parent); 
     setIsExpanded(!isExpanded);
+  };
+  const handleListChildClick = (item: string) => {
+    // console.log(item);
   };
   return (
     <>
-      <button className="list-parent" onClick={handleListParentClick}>
+      <button className="list-parent" onClick={()=>handleListParentClick(parent,subParent)}>
         {parent}
         {isExpanded ? "▲" : "▼"}
       </button>
@@ -26,15 +33,20 @@ function AlgorithmItem({
           children.map((item, index) => {
             if (typeof item == "string") {
               return (
-                <div key={item} className="list-children">
+                <button
+                  key={item}
+                  className="list-children"
+                  onClick={() => handleListChildClick(item)}
+                >
                   {item}
-                </div>
+                </button>
               );
             }
             if (typeof item == "object") {
               return (
                 <AlgorithmItem
                   parent={item.parent}
+                  subParent={true}
                   children={item.children}
                   key={index}
                 />
@@ -122,20 +134,20 @@ export default function AlgorithmList() {
             "Quick Sort",
             "Heap Sort",
             "Shell Sort",
-          ]
+          ],
         },
         {
           parent: "Non-comparison-based",
-          children: ["Counting Sort", "Radix Sort", "Bucket Sort"]
+          children: ["Counting Sort", "Radix Sort", "Bucket Sort"],
         },
         {
           parent: "Hybrid Sorting Algorithms",
           children: [
             "TimSort (Python, Java standard sorting)",
             "IntroSort(C++ standard sorting)",
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     },
     {
       parent: "Divide and Conquer Algorithms",
@@ -329,6 +341,7 @@ export default function AlgorithmList() {
           {algorithms.map((algorithm: any, index: number) => (
             <AlgorithmItem
               parent={algorithm.parent}
+              subParent={false}
               children={algorithm.children}
               key={index}
             />

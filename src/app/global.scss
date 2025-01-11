@@ -3,11 +3,13 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 .home-page-container {
   width: 100vw;
   height: 100vh;
   background-color: black;
 }
+
 .home-page-wrapper {
   width: 100%;
   height: 100%;
@@ -15,23 +17,29 @@
   grid-template-columns: repeat(40, 1fr);
   grid-template-rows: repeat(35, 1fr);
 }
+
 .header {
   grid-area: 1 / 1 / 4 / 41;
   background-color: lightcyan;
 }
+
 .algorithm-list {
   grid-area: 4 / 1 / 28 / 7;
   background-color: lightgreen;
+  overflow-y: scroll;
   
 }
+
 .algorithm-preview {
   grid-area: 28 / 1 / 36 / 7;
   background-color: lightyellow;
 }
+
 .visualization-container {
   grid-area: 4 / 7 / 36 / 29 ;
   background-color: red;
 }
+
 .codeBlock{
     grid-area: 4 / 29 / 36 / 41 ;
     background-color: rgb(163, 163, 163);
