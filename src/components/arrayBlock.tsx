@@ -1,3 +1,4 @@
+import { Operations, Tree } from "@/helper/tree";
 import "./components.scss";
 import { useEffect, useState } from "react";
 interface ArrayProps {
@@ -20,8 +21,13 @@ export default function ArrayBlock({ size, arr, setArr}: ArrayProps) {
         }
         setArr([...shuffledArray]);
     },[])
+    
 //   const handleShuffle = () => {
 //   };
+
+
+
+
 
   return (
     <>
